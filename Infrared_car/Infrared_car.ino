@@ -72,6 +72,30 @@ void dome(){
     digitalWrite(IN3,!HIGH);
     digitalWrite(IN4,!HIGH);
 }
+void Left_handed(){
+    
+    digitalWrite(IN1,!HIGH);
+    digitalWrite(IN2,HIGH);
+    digitalWrite(IN3,!HIGH);
+    digitalWrite(IN4,HIGH);
+    delay(150);
+    digitalWrite(IN1,!HIGH);
+    digitalWrite(IN2,!HIGH);
+    digitalWrite(IN3,!HIGH);
+    digitalWrite(IN4,!HIGH);
+}
+void right_handed(){
+    
+    digitalWrite(IN1,HIGH);
+    digitalWrite(IN2,!HIGH);
+    digitalWrite(IN3,HIGH);
+    digitalWrite(IN4,!HIGH);
+    delay(150);
+    digitalWrite(IN1,!HIGH);
+    digitalWrite(IN2,!HIGH);
+    digitalWrite(IN3,!HIGH);
+    digitalWrite(IN4,!HIGH);
+}
 
 void handleReceivedTinyIRData(uint16_t aAddress, uint8_t aCommand, bool isRepeat)
 {
@@ -90,6 +114,12 @@ void handleReceivedTinyIRData(uint16_t aAddress, uint8_t aCommand, bool isRepeat
     case 0x52:
         dome();
         break;
+    case 0x8:
+        Left_handed();
+        break;   
+    case 0x5A:
+        right_handed();
+        break;        
     default:
         break;
     }
